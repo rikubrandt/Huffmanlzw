@@ -1,5 +1,7 @@
 # Project definition
 
+I'm student in Computer Science (Tietojenkäsittelytieteen kandidaatti.)
+
 This project compares Huffman coding and Lempel-Ziv-Welch algorithms on text compression.
 
 The program takes a text file as an input and compresses it to smaller size.
@@ -12,7 +14,7 @@ Huffman coding uses a huffman tree as data structure.
 Lempel-Ziv-Welch uses dictionary.
 
 Programming language: Python 
-Documentation language: English 
+ocumentation language: English 
 
 ### Sources
 - <https://en.wikipedia.org/wiki/Huffman_coding> 
