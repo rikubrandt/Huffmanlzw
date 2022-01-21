@@ -11,11 +11,12 @@ When compressed the text files should be anywhere from 20% to 90% smaller in siz
 Huffman coding uses a huffman tree as data structure.
 Lempel-Ziv-Welch uses dictionary.
 
-Programming language: Python
-Documentation language: English
+Programming language: Python 
+Documentation language: English 
 
 ### Sources
 - <https://en.wikipedia.org/wiki/Huffman_coding> 
 - <https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch>
+
 
 
