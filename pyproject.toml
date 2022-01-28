@@ -2,10 +2,12 @@
 name = "huffmanlzw"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Riku Brandt"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+coverage = "^6.3"
+pytest = "^6.2.5"
 
 [tool.poetry.dev-dependencies]
 
