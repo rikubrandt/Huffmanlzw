@@ -59,13 +59,13 @@ class HuffmanEncoding:
 
 
 
-
 class HuffmanTreeNode():
     def __init__(self, char=None, freq=None, left=None, right=None):
         self.char = char
         self.freq = freq
         self.left = left
         self.right = right
+        self.direction = ""
     
     def __lt__(self, other):
         return self.freq < other.freq
@@ -85,8 +85,11 @@ class HuffmanTreeNode():
 if __name__ == "__main__":
     h = HuffmanEncoding("text.txt")
 
-    dic = h.calculate_frequency()
-    print(dic)
-    s = h.generate_huffman_tree(dic)
-    print(s.left.left.left.left.freq)
-    print(s.right.freq)
+    freq = h.calculate_frequency()
+    print(freq)
+    tree = h.generate_huffman_tree(freq)
+
+    x = h.tree_to_bits(tree)
+    print(x)
+   # print(s.left.left.left.left.freq)
+    #print(s.right.freq)
