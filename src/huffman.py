@@ -1,3 +1,5 @@
+from heapq import heapify, heappush, heappop
+
 from collections import defaultdict
 class HuffmanEncoding:
     def __init__(self, file):
@@ -28,7 +30,29 @@ class HuffmanEncoding:
 
 
     def generate_huffman_tree(self, dict):
-        pass
+        heap = []
+        heapify(heap)
+
+        for char, freq in dict.items():
+            heappush(heap, HuffmanTreeNode(char, freq))
+
+        print(heap)
+
+        for _ in range(len(heap)-1):
+            left = heappop(heap)
+            right = heappop(heap)
+            heappush(heap, HuffmanTreeNode(
+                        char=None,
+                        freq=left.freq+right.freq,
+                        left=left,
+                        right=right))
+
+        return heappop(heap)
+
+    def generate_bits(self, root):
+
+        bits = ""
+
 
     def generate_file(self):
         pass
@@ -37,11 +61,14 @@ class HuffmanEncoding:
 
 
 class HuffmanTreeNode():
-    def __init__(self, char, freq=None, left=None, right=None):
-        char = self.char
-        freq = self.freq
-        left = self.left
-        right = self.right
+    def __init__(self, char=None, freq=None, left=None, right=None):
+        self.char = char
+        self.freq = freq
+        self.left = left
+        self.right = right
+    
+    def __lt__(self, other):
+        return self.freq < other.freq
 
     def set_right_node(self, right):
         self.right = right
@@ -50,10 +77,16 @@ class HuffmanTreeNode():
         self.left = left
 
 
+    
+
+
+
+
 if __name__ == "__main__":
     h = HuffmanEncoding("text.txt")
 
     dic = h.calculate_frequency()
-
     print(dic)
-    print(dic)
+    s = h.generate_huffman_tree(dic)
+    print(s.left.left.left.left.freq)
+    print(s.right.freq)
