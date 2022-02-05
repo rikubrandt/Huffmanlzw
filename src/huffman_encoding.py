@@ -1,6 +1,7 @@
 
 from huffman import HuffmanCoding
 import os
+from bit_converter import bits_to_bytes
 class Huffman_Encoding():
 
     def encode_file(self, path):
@@ -24,12 +25,12 @@ class Huffman_Encoding():
         tree_bits_length = format(len(treebits), "016b")
 
         combined_bits = tree_bits_length + treebits + encoded_text
-
+        combined_bytes = bits_to_bytes(combined_bits)
         print(tree_bits_length)
         
         encoded_file_name = os.path.splitext(path)[0]
         with open(encoded_file_name, "wb") as encoded_file:
-            encoded_file.write(combined_bits)
+            encoded_file.write(combined_bytes)
         return encoded_file_name
 
 h = Huffman_Encoding()
