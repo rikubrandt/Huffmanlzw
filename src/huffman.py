@@ -62,4 +62,8 @@ class HuffmanCoding:
             return self.tree_bits
         return rec(root)
     
-    
+    def divide_bits(self, bits):
+        tree_bit_count = int(bits[:16], 2)
+        bits = bits[16:]
+
+        return bits[:tree_bit_count], bits[tree_bit_count:]
