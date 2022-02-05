@@ -1,9 +1,10 @@
 from heapq import heapify, heappush, heappop
 from huffman_tree_node import HuffmanTreeNode
 from collections import defaultdict
+
 class HuffmanCoding:
     def __init__(self):
-        pass
+        self.tree_bits = ""
 
     def calculate_frequency(self, text):
         frequency = defaultdict(int)
@@ -20,8 +21,6 @@ class HuffmanCoding:
 
         for char, freq in dict.items():
             heappush(heap, HuffmanTreeNode(char, freq))
-
-        print(heap)
 
         for _ in range(len(heap)-1):
             left = heappop(heap)
@@ -51,17 +50,14 @@ class HuffmanCoding:
         return s
 
 
-if __name__ == "__main__":
-    h = HuffmanEncoding("text.txt")
+    def huffman_tree_to_bits(self, root):
+        self.tree_bits = ""
 
-    freq = h.calculate_frequency()
-    print(freq)
-    root = h.generate_huffman_tree(freq)
-    dict = {}
-    h.generate_codes(root, '', dict)
-
-    print(dict)
-
-
-   # print(s.left.left.left.left.freq)
-    #print(s.right.freq)
+        def rec(root):
+            if root.isLeaf():
+                self.tree_bits += "0" + format(ord(root.char), "b")
+            else:
+                rec(root.left)
+                rec(root.right)
+            return self.tree_bits
+        return rec(root)

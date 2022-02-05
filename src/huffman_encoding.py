@@ -3,7 +3,7 @@ from huffman import HuffmanCoding
 
 class Huffman_Encoding():
 
-    def encode_file(path):
+    def encode_file(self, path):
 
         encode = HuffmanCoding()
 
@@ -17,5 +17,10 @@ class Huffman_Encoding():
 
         encoded_text = encode.generate_encoded_text(dict, text)
         print(encoded_text)
-h = Huffman_Encoding
-h.encode_file(path='text.txt')
+        
+        treebits = encode.huffman_tree_to_bits(root)
+        print("Tree bits: ", treebits)
+
+
+h = Huffman_Encoding()
+h.encode_file(path="text.txt")
