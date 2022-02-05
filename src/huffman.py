@@ -1,26 +1,15 @@
 from heapq import heapify, heappush, heappop
 from huffman_tree_node import HuffmanTreeNode
 from collections import defaultdict
-class HuffmanEncoding:
-    def __init__(self, file):
-        self.file = file
+class HuffmanCoding:
+    def __init__(self):
+        pass
 
-    
-    def file_reader(self):
-        with open(self.file, "r") as f:
-            text = f.read()
-        return text
-
-    def calculate_frequency(self):
+    def calculate_frequency(self, text):
         frequency = defaultdict(int)
 
-        iterator = self.file_reader()
-        while True:
-            try:
-                c = next(iterator)
-                frequency[c] += 1
-            except StopIteration:
-                break
+        for char in text:
+            frequency[char] += 1
 
         return dict(sorted(frequency.items(), key=lambda item: item[1], reverse=True))
 
