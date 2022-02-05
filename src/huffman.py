@@ -61,3 +61,5 @@ class HuffmanCoding:
                 rec(root.right)
             return self.tree_bits
         return rec(root)
+    
+    

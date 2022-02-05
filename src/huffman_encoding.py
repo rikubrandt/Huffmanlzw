@@ -1,6 +1,6 @@
 
 from huffman import HuffmanCoding
-
+import os
 class Huffman_Encoding():
 
     def encode_file(self, path):
@@ -17,10 +17,20 @@ class Huffman_Encoding():
 
         encoded_text = encode.generate_encoded_text(dict, text)
         print(encoded_text)
-        
-        treebits = encode.huffman_tree_to_bits(root)
-        print("Tree bits: ", treebits)
 
+        treebits = encode.huffman_tree_to_bits(root)
+        
+        #Treebits length converterted to 16bit binary (max 65k)
+        tree_bits_length = format(len(treebits), "016b")
+
+        combined_bits = tree_bits_length + treebits + encoded_text
+
+        print(tree_bits_length)
+        
+        encoded_file_name = os.path.splitext(path)[0]
+        with open(encoded_file_name, "wb") as encoded_file:
+            encoded_file.write(combined_bits)
+        return encoded_file_name
 
 h = Huffman_Encoding()
 h.encode_file(path="text.txt")
