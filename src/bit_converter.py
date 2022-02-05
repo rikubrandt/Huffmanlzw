@@ -16,3 +16,10 @@ def bits_to_bytes(bits):
 
     return bytes(byte_array)
 
+def bytes_to_bits(bytes):
+    bits = ""
+    for byte in bytes:
+        bits += bin(byte)[2:].zfill(8)
+
+    return bits
+
