@@ -49,13 +49,17 @@ class HuffmanEncoding:
 
         return heappop(heap)
 
-    def generate_bits(self, root):
+    def encode(self, root, s, dict):
 
-        bits = ""
+        if root is None:
+            return
+
+        if root.isLeaf():
+            dict[root.char] = s if len(s) > 0 else '1'
+        self.encode(root.left, s+'0', dict)
+        self.encode(root.right, s+'1', dict)
 
 
-    def generate_file(self):
-        pass
 
 
 
@@ -65,10 +69,15 @@ class HuffmanTreeNode():
         self.freq = freq
         self.left = left
         self.right = right
-        self.direction = ""
     
+    # Override comparison function
     def __lt__(self, other):
         return self.freq < other.freq
+
+    def isLeaf(self):
+        if self.left is None and self.right is None:
+            return True
+        return False
 
     def set_right_node(self, right):
         self.right = right
@@ -87,9 +96,10 @@ if __name__ == "__main__":
 
     freq = h.calculate_frequency()
     print(freq)
-    tree = h.generate_huffman_tree(freq)
+    root = h.generate_huffman_tree(freq)
+    dict = {}
+    h.encode(root, '', dict)
 
-    x = h.tree_to_bits(tree)
-    print(x)
+    print(dict)
    # print(s.left.left.left.left.freq)
     #print(s.right.freq)
