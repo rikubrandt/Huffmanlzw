@@ -21,5 +21,7 @@ def bytes_to_bits(bytes):
     for byte in bytes:
         bits += bin(byte)[2:].zfill(8)
 
-    return bits
+    #Removes the extra bits
+    extras = int(bits[:8], 2)
+    return bits[8+extras:]
 
