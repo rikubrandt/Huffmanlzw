@@ -28,7 +28,7 @@ class Huffman_Encoding():
         combined_bytes = bits_to_bytes(combined_bits)
         print(tree_bits_length)
         
-        encoded_file_name = os.path.splitext(path)[0]
+        encoded_file_name = os.path.splitext(path)[0] + ".bin"
         with open(encoded_file_name, "wb") as encoded_file:
             encoded_file.write(combined_bytes)
         return encoded_file_name
