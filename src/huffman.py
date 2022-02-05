@@ -1,5 +1,5 @@
 from heapq import heapify, heappush, heappop
-
+from huffman_tree_node import HuffmanTreeNode
 from collections import defaultdict
 class HuffmanEncoding:
     def __init__(self, file):
@@ -7,13 +7,9 @@ class HuffmanEncoding:
 
     
     def file_reader(self):
-        with open(self.file) as r:
-            while True:
-                character = r.read(1)
-                if character:
-                    yield character
-                else:
-                    return
+        with open(self.file, "r") as f:
+            text = f.read()
+        return text
 
     def calculate_frequency(self):
         frequency = defaultdict(int)
@@ -49,46 +45,21 @@ class HuffmanEncoding:
 
         return heappop(heap)
 
-    def encode(self, root, s, dict):
+    def generate_codes(self, root, s, dict):
 
         if root is None:
             return
 
         if root.isLeaf():
             dict[root.char] = s if len(s) > 0 else '1'
-        self.encode(root.left, s+'0', dict)
-        self.encode(root.right, s+'1', dict)
+        self.generate_codes(root.left, s+'0', dict)
+        self.generate_codes(root.right, s+'1', dict)
 
-
-
-
-
-class HuffmanTreeNode():
-    def __init__(self, char=None, freq=None, left=None, right=None):
-        self.char = char
-        self.freq = freq
-        self.left = left
-        self.right = right
-    
-    # Override comparison function
-    def __lt__(self, other):
-        return self.freq < other.freq
-
-    def isLeaf(self):
-        if self.left is None and self.right is None:
-            return True
-        return False
-
-    def set_right_node(self, right):
-        self.right = right
-
-    def set_left_node(self, left):
-        self.left = left
-
-
-    
-
-
+    def generate_encoded_text(self, dict, text):
+        s = ''
+        for char in text:
+            s += dict.get(char)
+        return s
 
 
 if __name__ == "__main__":
@@ -98,8 +69,10 @@ if __name__ == "__main__":
     print(freq)
     root = h.generate_huffman_tree(freq)
     dict = {}
-    h.encode(root, '', dict)
+    h.generate_codes(root, '', dict)
 
     print(dict)
+
+
    # print(s.left.left.left.left.freq)
     #print(s.right.freq)
