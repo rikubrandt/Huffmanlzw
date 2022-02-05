@@ -6,3 +6,4 @@
 ## Weekly reports
 [Week 1](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/week1_report.md) 
 [Week 2](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/week2_report.md)
+[Week 3](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/week3_report.md)
