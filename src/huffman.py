@@ -27,7 +27,7 @@ class HuffmanCoding:
             right = heappop(heap)
             heappush(heap, HuffmanTreeNode(
                         char=None,
-                        freq=left.freq+right.freq,
+                        freq=(left.freq+right.freq),
                         left=left,
                         right=right))
 
@@ -39,8 +39,8 @@ class HuffmanCoding:
         if root is None:
             return
 
-        if root.isLeaf():
-            dict[root.char] = s if len(s) > 0 else "1"
+        if root.char is not None:
+            dict[root.char] = s
         self.generate_codes(root.left, s+"0", dict)
         self.generate_codes(root.right, s+"1", dict)
 
@@ -57,9 +57,9 @@ class HuffmanCoding:
 
         def rec(root):
             if root.isLeaf():
-                self.tree_bits += "0" + format(ord(root.char), "b")
+                self.tree_bits += "1" + format(ord(root.char), "08b")
             else:
-                self.tree_bits += "1"
+                self.tree_bits += "0"
                 rec(root.left)
                 rec(root.right)
             return self.tree_bits
@@ -73,33 +73,49 @@ class HuffmanCoding:
         return bits[:tree_bit_count], bits[tree_bit_count:]
     
     def build_bits_to_tree(self, bits):
-        print(bits)
 
         root = HuffmanTreeNode()
-        stack = []
-        stack.append(root)
-
-        for i in range(1, len(bits)):
+        stack = [root]
+        i = 1
+        while i < len(bits):
             last = stack[-1]
-            if bits[i] == "1":
-                
+            if bits[i] == "0":
+                node = HuffmanTreeNode()
+                if self.add_child_to_node(last, node):
+                    stack.pop()
+            else:
                 # Get character from the bits.
-                character = chr(int(bits[i+1:i+9], base=2))
+                character = chr(int(bits[i+1: i+9], base=2))
+                print(character)
                 i += 8
                 node = HuffmanTreeNode(char=character)
 
                 if self.add_child_to_node(last, node):
                     stack.pop()
-            else:
-                node = HuffmanTreeNode()
-                if self.add_child_to_node(last, node):
-                    stack.pop()
             stack.append(node)
+            i +=1
         return root
-        
+    
+    # Adds child to left first then right, returns true for deletion purposes.
     def add_child_to_node(self, parent, node):
                 if parent.left is None:
                     parent.set_left_node(node)
+                    return False
                 else:
                     parent.set_right_node(node)
                     return True
+
+    def build_bits_to_text(self, bits, root):
+        node = root
+        print(root)
+        text = ""
+
+        for bit in bits:
+            if node.char is not None:
+                print(node.char)
+            if bit == "0":
+                node = node.left
+            else:
+                node = node.right
+
+        return text

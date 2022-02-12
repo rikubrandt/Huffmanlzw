@@ -15,7 +15,7 @@ class Huffman_Encoding():
         root = encode.generate_huffman_tree(freq)
         dict = {}
         encode.generate_codes(root, '', dict)
-
+        print(dict)
         encoded_text = encode.generate_encoded_text(dict, text)
 
         treebits = encode.huffman_tree_to_bits(root)
@@ -26,6 +26,10 @@ class Huffman_Encoding():
         combined_bits = tree_bits_length + treebits + encoded_text
 
         combined_bytes = bits_to_bytes(combined_bits)
+
+        print("Length of tree: " , len(treebits))
+        print("Tree bits: ", treebits)
+        print("Text: ",encoded_text)
         print(combined_bits)
         
         encoded_file_name = os.path.splitext(path)[0] + ".bin"

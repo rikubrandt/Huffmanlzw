@@ -1,6 +1,3 @@
-
-
-from huffman import HuffmanCoding
 from huffman import HuffmanCoding
 from bit_converter import bytes_to_bits
 
@@ -19,9 +16,14 @@ class Huffman_Decoding():
 
         tree_bits, text_bits = decode.divide_bits(bites)
 
+        print("Treebits: ", tree_bits)
+        print("Text bits: ", text_bits)
         tree_root = decode.build_bits_to_tree(tree_bits)
+
+        text = decode.build_bits_to_text(text_bits, tree_root)
         
-        print(tree_root.left)
+
+        print(text)
 
 
 h = Huffman_Decoding()
