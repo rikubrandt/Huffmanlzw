@@ -55,13 +55,13 @@ class HuffmanCoding:
     def huffman_tree_to_bits(self, root):
         self.tree_bits = ""
 
-        def rec(root):
-            if root.isLeaf():
-                self.tree_bits += "1" + format(ord(root.char), "08b")
+        def rec(node):
+            if node.isLeaf():
+                self.tree_bits += "1" + format(ord(node.char), "08b")
             else:
                 self.tree_bits += "0"
-                rec(root.left)
-                rec(root.right)
+                rec(node.left)
+                rec(node.right)
             return self.tree_bits
         return rec(root)
     
@@ -73,27 +73,37 @@ class HuffmanCoding:
         return bits[:tree_bit_count], bits[tree_bit_count:]
     
     def build_bits_to_tree(self, bits):
-
         root = HuffmanTreeNode()
         stack = [root]
         i = 1
+
         while i < len(bits):
             last = stack[-1]
+            print(last.char)
             if bits[i] == "0":
-                node = HuffmanTreeNode()
-                if self.add_child_to_node(last, node):
+                new = HuffmanTreeNode()
+                if last.left is None:
+                    last.set_left_node(new)
+                    stack.append(new)
+                else:
+                    last.set_right_node(new)
                     stack.pop()
+                    stack.append(new)
             else:
                 # Get character from the bits.
                 character = chr(int(bits[i+1: i+9], base=2))
-                print(character)
                 i += 8
                 node = HuffmanTreeNode(char=character)
 
-                if self.add_child_to_node(last, node):
+                if last.left is None:
+                    last.set_left_node(node)
+                    stack.append(node)
+                else:
+                    print("Right")
+                    last.set_right_node(node)
                     stack.pop()
-            stack.append(node)
-            i +=1
+                    stack.append(node)
+            i += 1
         return root
     
     # Adds child to left first then right, returns true for deletion purposes.
@@ -107,15 +117,13 @@ class HuffmanCoding:
 
     def build_bits_to_text(self, bits, root):
         node = root
-        print(root)
         text = ""
+        if node.char is not None:
+            return node.char * len(bits)
 
         for bit in bits:
-            if node.char is not None:
-                print(node.char)
-            if bit == "0":
-                node = node.left
-            else:
-                node = node.right
-
+            node = node.left if bit == "0" else node.right
+            if node.left is None and node.right is None:
+                text =  text + node.char
+                node = root
         return text
