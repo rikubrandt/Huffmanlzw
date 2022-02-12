@@ -17,7 +17,10 @@ class Huffman_Decoding():
 
         bites = bytes_to_bits(bytes)
 
-        print(bites)
+        tree_bits, text_bits = decode.divide_bits(bites)
+
+        decode.build_bits_to_tree(tree_bits)
+        
 
 
 h = Huffman_Decoding()

@@ -33,23 +33,25 @@ class HuffmanCoding:
 
         return heappop(heap)
 
+    # Generates the dictionary of the huffman tree, used for encoding.
     def generate_codes(self, root, s, dict):
 
         if root is None:
             return
 
         if root.isLeaf():
-            dict[root.char] = s if len(s) > 0 else '1'
-        self.generate_codes(root.left, s+'0', dict)
-        self.generate_codes(root.right, s+'1', dict)
+            dict[root.char] = s if len(s) > 0 else "1"
+        self.generate_codes(root.left, s+"0", dict)
+        self.generate_codes(root.right, s+"1", dict)
 
+    
     def generate_encoded_text(self, dict, text):
-        s = ''
+        s = ""
         for char in text:
             s += dict.get(char)
         return s
 
-
+    # Turns the tree structure to bits for encoding.
     def huffman_tree_to_bits(self, root):
         self.tree_bits = ""
 
@@ -57,13 +59,18 @@ class HuffmanCoding:
             if root.isLeaf():
                 self.tree_bits += "0" + format(ord(root.char), "b")
             else:
+                self.tree_bits += "1"
                 rec(root.left)
                 rec(root.right)
             return self.tree_bits
         return rec(root)
     
+    # Divide treebits and text bits from the encoded bits.
     def divide_bits(self, bits):
         tree_bit_count = int(bits[:16], 2)
         bits = bits[16:]
 
         return bits[:tree_bit_count], bits[tree_bit_count:]
+    
+    def build_bits_to_tree(self, bits):
+        print(bits)
