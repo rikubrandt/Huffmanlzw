@@ -19,8 +19,9 @@ class Huffman_Decoding():
 
         tree_bits, text_bits = decode.divide_bits(bites)
 
-        decode.build_bits_to_tree(tree_bits)
+        tree_root = decode.build_bits_to_tree(tree_bits)
         
+        print(tree_root.left)
 
 
 h = Huffman_Decoding()

@@ -74,3 +74,32 @@ class HuffmanCoding:
     
     def build_bits_to_tree(self, bits):
         print(bits)
+
+        root = HuffmanTreeNode()
+        stack = []
+        stack.append(root)
+
+        for i in range(1, len(bits)):
+            last = stack[-1]
+            if bits[i] == "1":
+                
+                # Get character from the bits.
+                character = chr(int(bits[i+1:i+9], base=2))
+                i += 8
+                node = HuffmanTreeNode(char=character)
+
+                if self.add_child_to_node(last, node):
+                    stack.pop()
+            else:
+                node = HuffmanTreeNode()
+                if self.add_child_to_node(last, node):
+                    stack.pop()
+            stack.append(node)
+        return root
+        
+    def add_child_to_node(self, parent, node):
+                if parent.left is None:
+                    parent.set_left_node(node)
+                else:
+                    parent.set_right_node(node)
+                    return True
