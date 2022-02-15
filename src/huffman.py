@@ -81,14 +81,14 @@ class HuffmanCoding:
         while i < len(bits):
             last = stack[-1]
             if bits[i] == "0":
-                new = HuffmanTreeNode()
+                node = HuffmanTreeNode()
                 if last.left is None:
-                    last.set_left_node(new)
-                    stack.append(new)
+                    last.set_left_node(node)
+                    stack.append(node)
                 else:
-                    last.set_right_node(new)
+                    last.set_right_node(node)
                     stack.pop()
-                    stack.append(new)
+                    stack.append(node)
             else:
                 # Get character from the bits.
                 character = chr(int(bits[i+1: i+9], base=2))
