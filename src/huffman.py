@@ -15,11 +15,11 @@ class HuffmanCoding:
         return dict(sorted(frequency.items(), key=lambda item: item[1], reverse=True))
 
 
-    def generate_huffman_tree(self, dict):
+    def generate_huffman_tree(self, table):
         heap = []
         heapify(heap)
 
-        for char, freq in dict.items():
+        for char, freq in table.items():
             heappush(heap, HuffmanTreeNode(char=char, freq=freq))
 
         while len(heap)!= 1:
@@ -34,21 +34,19 @@ class HuffmanCoding:
         return heappop(heap)
 
     # Generates the dictionary of the huffman tree, used for encoding.
-    def generate_codes(self, root, s, dict):
-
+    def generate_codes(self, root, s, table):
         if root is None:
             return
 
         if root.char is not None:
-            dict[root.char] = s
-        self.generate_codes(root.left, s+"0", dict)
-        self.generate_codes(root.right, s+"1", dict)
+            table[root.char] = s
+        self.generate_codes(root.left, s+"0", table)
+        self.generate_codes(root.right, s+"1", table)
 
-    
-    def generate_encoded_text(self, dict, text):
+    def generate_encoded_text(self, table, text):
         s = ""
         for char in text:
-            s += dict.get(char)
+            s += table.get(char)
         return s
 
     # Turns the tree structure to bits for encoding.
@@ -64,15 +62,15 @@ class HuffmanCoding:
                 rec(node.right)
             return self.tree_bits
         return rec(root)
-    
+
     # Divide treebits and text bits from the encoded bits.
     def divide_bits(self, bits):
-        
+
         tree_bit_count = int(bits[:16], 2)
         bits = bits[16:]
 
         return bits[:tree_bit_count], bits[tree_bit_count:]
-    
+
     def build_bits_to_tree(self, bits):
         root = HuffmanTreeNode()
         stack = [root]
