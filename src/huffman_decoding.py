@@ -20,16 +20,13 @@ class Huffman_Decoding():
         #print("Text bits: ", text_bits)
         tree_root = decode.build_bits_to_tree(tree_bits)
 
-        print(tree_root.char)
-        print(tree_root.right)
-        #print(tree_root.left.right)
+        print("Tree bits: ", tree_bits)
+        print("Text bits: ", text_bits)
 
-
-
-        #text = decode.build_bits_to_text(text_bits, tree_root)
+        text = decode.build_bits_to_text(text_bits, tree_root)
         
 
-        #print(text)
+        print(text)
 
 
 h = Huffman_Decoding()

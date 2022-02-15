@@ -20,9 +20,9 @@ class Huffman_Encoding():
 
         treebits = encode.huffman_tree_to_bits(root)
         
-        #Treebits length converterted to 16bit binary (max 65k)
+        #Treebits length converted to 16bit binary (max 65k)
         tree_bits_length = format(len(treebits), "016b")
-
+        print("Len" , tree_bits_length)
         combined_bits = tree_bits_length + treebits + encoded_text
 
         combined_bytes = bits_to_bytes(combined_bits)
@@ -30,7 +30,7 @@ class Huffman_Encoding():
         print("Length of tree: " , len(treebits))
         print("Tree bits: ", treebits)
         print("Text: ",encoded_text)
-        print(combined_bits)
+        print("Combined" , combined_bits)
         
         encoded_file_name = os.path.splitext(path)[0] + ".bin"
         with open(encoded_file_name, "wb") as encoded_file:

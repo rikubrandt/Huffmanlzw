@@ -20,9 +20,9 @@ class HuffmanCoding:
         heapify(heap)
 
         for char, freq in dict.items():
-            heappush(heap, HuffmanTreeNode(char, freq))
+            heappush(heap, HuffmanTreeNode(char=char, freq=freq))
 
-        for _ in range(len(heap)-1):
+        while len(heap)!= 1:
             left = heappop(heap)
             right = heappop(heap)
             heappush(heap, HuffmanTreeNode(
@@ -67,6 +67,7 @@ class HuffmanCoding:
     
     # Divide treebits and text bits from the encoded bits.
     def divide_bits(self, bits):
+        
         tree_bit_count = int(bits[:16], 2)
         bits = bits[16:]
 
@@ -79,7 +80,6 @@ class HuffmanCoding:
 
         while i < len(bits):
             last = stack[-1]
-            print(last.char)
             if bits[i] == "0":
                 new = HuffmanTreeNode()
                 if last.left is None:
@@ -92,28 +92,16 @@ class HuffmanCoding:
             else:
                 # Get character from the bits.
                 character = chr(int(bits[i+1: i+9], base=2))
+                #print(character)
                 i += 8
                 node = HuffmanTreeNode(char=character)
-
                 if last.left is None:
                     last.set_left_node(node)
-                    stack.append(node)
                 else:
-                    print("Right")
                     last.set_right_node(node)
                     stack.pop()
-                    stack.append(node)
             i += 1
         return root
-    
-    # Adds child to left first then right, returns true for deletion purposes.
-    def add_child_to_node(self, parent, node):
-                if parent.left is None:
-                    parent.set_left_node(node)
-                    return False
-                else:
-                    parent.set_right_node(node)
-                    return True
 
     def build_bits_to_text(self, bits, root):
         node = root
@@ -122,8 +110,11 @@ class HuffmanCoding:
             return node.char * len(bits)
 
         for bit in bits:
-            node = node.left if bit == "0" else node.right
-            if node.left is None and node.right is None:
-                text =  text + node.char
+            if bit == "0":
+                node = node.left
+            else:
+                node = node.right
+            if node.isLeaf():
+                text = text + node.char
                 node = root
         return text
