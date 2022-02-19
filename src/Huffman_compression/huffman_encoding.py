@@ -1,7 +1,6 @@
 
 from huffman import HuffmanCoding
 import os
-
 from bit_converter import bits_to_bytes
 
 class Huffman_Encoding():
@@ -40,5 +39,5 @@ class Huffman_Encoding():
             encoded_file.write(combined_bytes)
         return encoded_file_name
 
-#h = Huffman_Encoding()
-#h.encode_file(path="text.txt")
+h = Huffman_Encoding()
+h.encode_file(path="text.txt")
