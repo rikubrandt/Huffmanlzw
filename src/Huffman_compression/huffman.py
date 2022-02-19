@@ -1,6 +1,6 @@
 from heapq import heapify, heappush, heappop
 from huffman_tree_node import HuffmanTreeNode
-from collections import defaultdict
+from collections import defaultdict 
 
 class HuffmanCoding:
     def __init__(self):

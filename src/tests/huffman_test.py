@@ -1,6 +1,6 @@
 import unittest
-from Huffman.huffman import HuffmanCoding
 
+from Huffman_compression.huffman import HuffmanCoding
 
 class TestHuffman(unittest.TestCase):
 
@@ -10,6 +10,7 @@ class TestHuffman(unittest.TestCase):
 
 
     def test_calculate_frequency(self):
-        freq = self.huffman.
+        freq = self.huffman.calculate_frequency(self.test_text)
+        self.assertEqual(freq, )
 
     

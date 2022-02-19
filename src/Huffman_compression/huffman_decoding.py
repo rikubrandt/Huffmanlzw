@@ -1,4 +1,4 @@
-from huffman import HuffmanCoding
+from huffman_compression.huffman import HuffmanCoding
 from bit_converter import bytes_to_bits
 
 
