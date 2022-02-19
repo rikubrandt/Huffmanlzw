@@ -14,7 +14,7 @@ Huffman coding uses a huffman tree as data structure.
 Lempel-Ziv-Welch uses dictionary.
 
 Programming language: Python 
-ocumentation language: English 
+documentation language: English 
 
 ### Sources
 - <https://en.wikipedia.org/wiki/Huffman_coding> 
