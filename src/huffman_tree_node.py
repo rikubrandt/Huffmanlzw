@@ -10,9 +10,7 @@ class HuffmanTreeNode():
         return self.freq < other.freq
 
     def isLeaf(self):
-        if self.left is None and self.right is None:
-            return True
-        return False
+        return self.left is None and self.right is None
 
     def set_right_node(self, right):
         self.right = right
