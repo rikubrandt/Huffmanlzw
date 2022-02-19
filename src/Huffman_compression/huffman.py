@@ -1,5 +1,5 @@
 from heapq import heapify, heappush, heappop
-from huffman_tree_node import HuffmanTreeNode
+from Huffman_compression.huffman_tree_node import HuffmanTreeNode
 from collections import defaultdict 
 
 class HuffmanCoding:
