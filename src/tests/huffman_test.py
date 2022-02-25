@@ -20,6 +20,7 @@ class TestHuffman(unittest.TestCase):
         self.combined_bits = self.tree_length + self.encoded_tree + self.encoded
 
 
+    ### ENCODING
     def test_calculate_frequency(self):
         freq = self.huffman.calculate_frequency(self.test_text)
         self.assertEqual(freq, self.frequency)
@@ -49,3 +50,16 @@ class TestHuffman(unittest.TestCase):
             bytes = f.read()
         bites = bytes_to_bits(bytes)
         self.assertEqual(bites, self.combined_bits)
+
+    ### DECODING
+
+    def test_divide_bits(self):
+        tree_bits, text_bits = self.huffman.divide_bits(self.combined_bits)
+        self.assertEqual(tree_bits, self.encoded_tree)
+        self.assertEqual(text_bits, self.encoded)
+
+    def test_bits_to_tree(self):
+        tree_root = self.huffman.build_bits_to_tree(self.encoded_tree)
+        self.assertEqual(tree_root.char, self.tree.char)
+        self.assertEqual(tree_root.left.char, self.tree.left.char)
+        self.assertEqual(tree_root.right.char, self.tree.right.char)
