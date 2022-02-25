@@ -1,7 +1,8 @@
 
-from huffman import HuffmanCoding
+from Huffman_compression.huffman import HuffmanCoding
+
 import os
-from bit_converter import bits_to_bytes
+from Huffman_compression.bit_converter import bits_to_bytes
 
 class Huffman_Encoding():
 
@@ -24,6 +25,7 @@ class Huffman_Encoding():
         
         #Treebits length converted to binary (max 65k)
         tree_bits_length = format(len(treebits), "016b")
+
         print("Len" , tree_bits_length)
         combined_bits = tree_bits_length + treebits + encoded_text
 
@@ -38,6 +40,3 @@ class Huffman_Encoding():
         with open(encoded_file_name, "wb") as encoded_file:
             encoded_file.write(combined_bytes)
         return encoded_file_name
-
-h = Huffman_Encoding()
-h.encode_file(path="text.txt")
