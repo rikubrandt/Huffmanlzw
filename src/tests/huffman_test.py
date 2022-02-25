@@ -63,3 +63,7 @@ class TestHuffman(unittest.TestCase):
         self.assertEqual(tree_root.char, self.tree.char)
         self.assertEqual(tree_root.left.char, self.tree.left.char)
         self.assertEqual(tree_root.right.char, self.tree.right.char)
+
+    def test_bits_to_text(self):
+        text = self.huffman.build_bits_to_text(self.encoded, self.tree)
+        self.assertEqual(text, self.test_text)
