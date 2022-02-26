@@ -9,3 +9,4 @@
 [Week 3](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/week3_report.md)
 [Week 4](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/week4_report.md)
 [Week 5](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/week5_report.md)
+[Week 6](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/week6_report.md)
