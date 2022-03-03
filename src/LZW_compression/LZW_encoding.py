@@ -1,5 +1,5 @@
 
-from LZW_compression.LZW import LZWCoding
+from LZW import LZWCoding
 
 
 class LZW_Encoding:

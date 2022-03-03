@@ -17,16 +17,25 @@ class LZWCoding:
         dict_size = 256
 
         compressed = []
+        s = text[0]
 
-        for c in text:
-            string_c = s + c
-            if string_c in codes:
-                s = string_c
+        for i in range(len(text)):
+            if i != len(text):
+                next_char = text[i+1]
             else:
+                next_char = ""
+            
+            new = s + next_char
+
+            if new not in codes:
                 compressed.append(codes[s])
-                s = c
+                codes[new] = dict_size
+                dict_size += 1
+                s = next_char
+            else:
+                s = new
         
-        if s in codes:
-            compressed.append(codes[s])
+        compressed.append(codes[s])
+        return codes
+
         
-        print(compressed)
