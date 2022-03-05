@@ -1,9 +1,9 @@
 
 
-class LZWCoding:
-    def __init__(self):
-        pass
+from bz2 import compress
 
+
+class LZWCoding:
 
     def compress(self, text):
         codes = {}
@@ -65,3 +65,31 @@ class LZWCoding:
             compressed.append(int(bits[i:i+length], 2))
 
         return compressed
+
+    def generate_text(self, compressed):
+        codes = {}
+
+        for i in compressed:
+            if i < 256:
+                codes[str(i)] = chr(i)
+        
+        dict_size = 256
+
+        current = str(compressed[0])
+
+        text = codes[current]
+
+        for i in range(len(compressed)-1):
+            next = str(compressed[i+1])
+
+            if next in codes:
+                char = codes[next][0]
+            else:
+                char = codes[current]
+
+            chars = codes[current] + char
+            codes[str(dict_size)] = chars
+            dict_size += 1
+            current = next
+            text += codes[current]
+        return text
