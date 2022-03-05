@@ -51,3 +51,17 @@ class LZWCoding:
             bits += b.format(code)
 
         return needed_bits + bits
+
+    def bits_to_list(self, bits):
+        extras = int(bits[:8], 2)
+        bits = bits[8+extras:]
+
+        length = int(bits[:8], 2)
+        bits = bits[8:]
+
+        compressed = []
+
+        for i in range(0, len(bits), length):
+            compressed.append(int(bits[i:i+length], 2))
+
+        return compressed
