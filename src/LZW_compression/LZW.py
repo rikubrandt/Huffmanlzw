@@ -20,7 +20,7 @@ class LZWCoding:
         s = text[0]
 
         for i in range(len(text)):
-            if i != len(text):
+            if i != len(text)-1:
                 next_char = text[i+1]
             else:
                 next_char = ""
@@ -36,6 +36,18 @@ class LZWCoding:
                 s = new
         
         compressed.append(codes[s])
-        return codes
+        return compressed
 
+    def create_bits(self, compressed):
         
+        max_bit_len = len(format(max(compressed), "b"))
+
+        needed_bits = format(max_bit_len, "08b")
+
+        bits = ""
+        b = "{0:0" + str(needed_bits) + "b}"
+        for code in compressed:
+            print(b.format(code))
+            bits += b.format(code)
+
+        return needed_bits + bits
