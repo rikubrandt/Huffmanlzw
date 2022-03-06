@@ -13,10 +13,10 @@ class LZW_Encoding:
 
         compressed = encoder.compress(text)
 
-        print(compressed)
+        #print(compressed)
 
         bits = encoder.create_bits(compressed)
-        print(len(bits))
+        #print(len(bits))
 
         bytes = bits_to_bytes(bits)
         encoded_file_name = os.path.splitext(path)[0] + ".bin"
