@@ -2,7 +2,7 @@
 from Huffman_compression.huffman import HuffmanCoding
 
 import os
-from Huffman_compression.bit_converter import bits_to_bytes
+from utils.bit_converter import bits_to_bytes
 
 class Huffman_Encoding():
 
@@ -26,15 +26,9 @@ class Huffman_Encoding():
         #Treebits length converted to binary (max 65k)
         tree_bits_length = format(len(treebits), "016b")
 
-        print("Len" , tree_bits_length)
         combined_bits = tree_bits_length + treebits + encoded_text
 
         combined_bytes = bits_to_bytes(combined_bits)
-
-        print("Length of tree: " , len(treebits))
-        print("Tree bits: ", treebits)
-        print("Text: ",encoded_text)
-        print("Combined" , combined_bits)
         
         encoded_file_name = os.path.splitext(path)[0] + ".bin"
         with open(encoded_file_name, "wb") as encoded_file:

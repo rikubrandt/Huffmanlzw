@@ -3,8 +3,7 @@
 def add_additional_bits(bits):
     over = 8 - (len(bits) % 8)
     count = format(over, "08b")
-    additional_bits = count + over * "0"
-    return additional_bits
+    return count + over * "0"
 
 def bits_to_bytes(bits):
     

@@ -1,5 +1,5 @@
 
-from LZW import LZWCoding
+from LZW_compression.LZW import LZWCoding
 
 from utils.bit_converter import bits_to_bytes
 import os
@@ -10,16 +10,14 @@ class LZW_Encoding:
 
         with open(path, "r") as f:
             text = f.read()
-
         compressed = encoder.compress(text)
 
-        #print(compressed)
 
         bits = encoder.create_bits(compressed)
-        #print(len(bits))
-
+        
         bytes = bits_to_bytes(bits)
         encoded_file_name = os.path.splitext(path)[0] + ".bin"
         with open(encoded_file_name, "wb") as encoded_file:
             encoded_file.write(bytes)
+            
         return encoded_file_name

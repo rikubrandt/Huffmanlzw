@@ -1,8 +1,5 @@
 
 
-from bz2 import compress
-
-
 class LZWCoding:
 
     def compress(self, text):
@@ -39,57 +36,43 @@ class LZWCoding:
         return compressed
 
     def create_bits(self, compressed):
-        
-        max_bit_len = len(format(max(compressed), "b"))
 
-        needed_bits = format(max_bit_len, "08b")
+        maxlength = len(format(max(compressed), "b"))
+
+        needed_bits = format(maxlength, "08b")
 
         bits = ""
-        b = "{0:0" + str(needed_bits) + "b}"
-        for code in compressed:
-            print(b.format(code))
-            bits += b.format(code)
+        for c in compressed:
+            b = "{0:0" + str(maxlength) + "b}"
+            bits += b.format(c)
 
         return needed_bits + bits
 
     def bits_to_list(self, bits):
-        extras = int(bits[:8], 2)
-        bits = bits[8+extras:]
-
         length = int(bits[:8], 2)
         bits = bits[8:]
 
-        compressed = []
-
-        for i in range(0, len(bits), length):
-            compressed.append(int(bits[i:i+length], 2))
-
-        return compressed
+        return [int(bits[i:i+length], 2) for i in range(0, len(bits), length)]
 
     def generate_text(self, compressed):
         codes = {}
+        for n in compressed:
+            if n < 256:
+                codes[str(n)] = chr(n)
 
-        for i in compressed:
-            if i < 256:
-                codes[str(i)] = chr(i)
-        
         dict_size = 256
-
         current = str(compressed[0])
-
         text = codes[current]
 
         for i in range(len(compressed)-1):
-            next = str(compressed[i+1])
-
-            if next in codes:
-                char = codes[next][0]
-            else:
-                char = codes[current]
+            next_char = str(compressed[i+1])
+            char = codes[next_char][0] if next_char in codes else codes[current]
 
             chars = codes[current] + char
             codes[str(dict_size)] = chars
+
             dict_size += 1
-            current = next
+            current = next_char
             text += codes[current]
+
         return text
