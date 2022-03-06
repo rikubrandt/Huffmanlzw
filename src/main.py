@@ -1,6 +1,8 @@
-
 from LZW_compression.LZW_encoding import LZW_Encoding
 from LZW_compression.LZW_decoding import LZW_Decoding
+
+from Huffman_compression.huffman_encoding import Huffman_Encoding
+from Huffman_compression.huffman_decoding import Huffman_Decoding
 
 def main():
     print("Text file compression.")
@@ -30,7 +32,14 @@ def encode():
             num = input()
 
             if num == "1":
-                encode()
+                try:
+                    path = input("Give file path.")
+                    huffman_encode = Huffman_Encoding()
+                    new_file = huffman_encode.encode_file(path)
+                    print("File encoded to: ", new_file)
+                    break
+                except FileNotFoundError:
+                    print("File not found.")
             elif num == "2":
                 try:
                     path = input("Give file path.")
@@ -55,7 +64,14 @@ def decode():
             num = input()
 
             if num == "1":
-                encode()
+                try:
+                    path = input("Give file path.")
+                    huffman_decode = Huffman_Decoding()
+                    new_file = huffman_decode.decode_file(path)
+                    print("File encoded to: ", new_file)
+                    break
+                except FileNotFoundError:
+                    print("File not found.")
             elif num == "2":
                 try:
                     path = input("Give file path.")
