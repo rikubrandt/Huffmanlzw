@@ -1,0 +1,3 @@
+[run]
+source = src
+omit = src/tests/**, src/main.py, src/Huffman_compression/__init__.py, src/LZW_compression/__init__.py
