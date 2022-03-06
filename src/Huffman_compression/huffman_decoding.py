@@ -1,5 +1,5 @@
-from huffman import HuffmanCoding
-from utils.bit_converter import bytes_to_bits
+from Huffman_compression.huffman import HuffmanCoding
+from Utils.bit_converter import bytes_to_bits
 import os
 
 class Huffman_Decoding():
@@ -25,9 +25,6 @@ class Huffman_Decoding():
         text = decode.build_bits_to_text(text_bits, tree_root)
         decoded_file_name = os.path.splitext(path)[0] + ".txt"
         with open(decoded_file_name, "w") as encoded_file:
-            encoded_file.write(bytes)
+            encoded_file.write(text)
 
         return decoded_file_name
-
-h = Huffman_Decoding()
-h.decode_file("text.bin")

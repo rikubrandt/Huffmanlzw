@@ -1,9 +1,9 @@
 import unittest
+from Utils.bit_converter import bytes_to_bits
 
 import os
 from Huffman_compression.huffman import HuffmanCoding
 from Huffman_compression.huffman_encoding import Huffman_Encoding
-from utils.bit_converter import bytes_to_bits
 
 class TestHuffman(unittest.TestCase):
 

@@ -1,7 +1,7 @@
 
 from LZW_compression.LZW import LZWCoding
 
-from utils.bit_converter import bytes_to_bits
+from Utils.bit_converter import bytes_to_bits
 import os
 
 

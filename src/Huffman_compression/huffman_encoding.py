@@ -2,7 +2,7 @@
 from Huffman_compression.huffman import HuffmanCoding
 
 import os
-from utils.bit_converter import bits_to_bytes
+from Utils.bit_converter import bits_to_bytes
 
 class Huffman_Encoding():
 
