@@ -27,8 +27,11 @@ After selection give the path of the file you want to encode/decode.
 2. LZW Encoding.
 3. Exit.
 1
-Give file path.
+Give file path:
 ```
-> Give file path. /home/user/Documents/huffmanlzw/test_file.txt
+`Give file path: /home/user/Documents/huffmanlzw/test_file.txt`
+
 And press enter.
 The compressed file will be generated in the same folder as the given file.
+
+`File encoded to:  /home/user/Documents/huffmanlzw//text.bin `
