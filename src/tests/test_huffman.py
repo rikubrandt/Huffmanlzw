@@ -3,8 +3,8 @@ from utils.bit_converter import bytes_to_bits
 
 import os
 from huffman_compression.huffman import HuffmanCoding
-from huffman_compression.huffman_encoding import Huffman_Encoding
-from huffman_compression.huffman_decoding import Huffman_Decoding
+from huffman_compression.huffman_encoding import HuffmanEncoding
+from huffman_compression.huffman_decoding import HuffmanDecoding
 
 class TestHuffman(unittest.TestCase):
 
@@ -44,7 +44,7 @@ class TestHuffman(unittest.TestCase):
         self.assertEqual(bits, self.encoded_tree)
 
     def test_huffman_compression(self):
-        huffman_encoder = Huffman_Encoding()
+        huffman_encoder = HuffmanEncoding()
         path = self.path + "/text.txt"
         filename = huffman_encoder.encode_file(path)
         with open(filename, "rb") as file:
@@ -70,7 +70,7 @@ class TestHuffman(unittest.TestCase):
         self.assertEqual(text, self.test_text)
 
     def test_huffman_decompression(self):
-        huffman_decoder = Huffman_Decoding()
+        huffman_decoder = HuffmanDecoding()
         path = self.path + "/text.bin"
         filename = huffman_decoder.decode_file(path)
         with open(filename, "r") as file:
