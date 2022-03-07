@@ -4,7 +4,7 @@ class HuffmanTreeNode():
         self.freq = freq
         self.left = left
         self.right = right
-    
+
     # Override comparison function
     def __lt__(self, other):
         return self.freq < other.freq

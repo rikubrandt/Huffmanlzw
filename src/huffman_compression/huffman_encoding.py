@@ -12,7 +12,7 @@ class HuffmanEncoding():
 
         with open(path, "r", encoding="utf-8") as file:
             text = file.read()
-   
+
         freq = encode.calculate_frequency(text)
         print(freq)
         root = encode.generate_huffman_tree(freq)
@@ -34,4 +34,3 @@ class HuffmanEncoding():
         with open(encoded_file_name, "wb") as encoded_file:
             encoded_file.write(combined_bytes)
         return encoded_file_name
-        

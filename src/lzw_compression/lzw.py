@@ -22,7 +22,7 @@ class LZWCoding:
             new = current + next_char
 
             if new not in codes:
-                compressed.append(codes[s])
+                compressed.append(codes[current])
                 codes[new] = dict_size
                 dict_size += 1
                 current = next_char

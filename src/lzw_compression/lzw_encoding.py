@@ -1,5 +1,5 @@
 
-from lzw_compression.LZW import LZWCoding
+from lzw_compression.lzw import LZWCoding
 
 from utils.bit_converter import bits_to_bytes
 import os

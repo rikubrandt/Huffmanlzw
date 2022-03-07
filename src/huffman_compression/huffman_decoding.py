@@ -8,8 +8,8 @@ class HuffmanDecoding():
 
         decode = HuffmanCoding()
 
-        with open(path, "rb") as f:
-            bytes = f.read()
+        with open(path, "rb") as file:
+            bytes = file.read()
 
         bites = bytes_to_bits(bytes)
 
