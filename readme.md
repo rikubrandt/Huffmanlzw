@@ -1,8 +1,11 @@
 # Huffman vs. Lempel-Ziv-Welch
 
 [Project definition](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/definition.md) 
+
 [User guide](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/user_guide.md) 
-[Implementation document](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/implementation.md) 
+
+[Implementation document](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/implementation.md)
+
 [Test document](https://github.com/rikubrandt/Huffmanlzw/blob/main/documentation/test_document.md) 
 
 
