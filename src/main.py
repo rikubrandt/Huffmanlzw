@@ -1,5 +1,5 @@
-from lzw_compression.LZW_encoding import LZWEncoding
-from lzw_compression.LZW_decoding import LZWDecoding
+from lzw_compression.lzw_encoding import LZWEncoding
+from lzw_compression.lzw_decoding import LZWDecoding
 
 from huffman_compression.huffman_encoding import HuffmanEncoding
 from huffman_compression.huffman_decoding import HuffmanDecoding

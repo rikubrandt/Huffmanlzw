@@ -7,6 +7,7 @@ max-args=6
 notes=FIXME,XXX
 [MESSAGES CONTROL]
 disable=
+	redefined-builtin,
 	unspecified-encoding,
 	no-self-use,
 	line-too-long,

@@ -42,13 +42,13 @@ class TestHuffman(unittest.TestCase):
     def test_tree_to_bits(self):
         bits = self.huffman.huffman_tree_to_bits(self.tree)
         self.assertEqual(bits, self.encoded_tree)
-    
+
     def test_huffman_compression(self):
         huffman_encoder = Huffman_Encoding()
         path = self.path + "/text.txt"
         filename = huffman_encoder.encode_file(path)
-        with open(filename, "rb") as f:
-            bytes = f.read()
+        with open(filename, "rb") as file:
+            bytes = file.read()
         bites = bytes_to_bits(bytes)
         self.assertEqual(bites, self.combined_bits)
 
@@ -73,7 +73,6 @@ class TestHuffman(unittest.TestCase):
         huffman_decoder = Huffman_Decoding()
         path = self.path + "/text.bin"
         filename = huffman_decoder.decode_file(path)
-        with open(filename, "r") as f:
-            text = f.read()
+        with open(filename, "r") as file:
+            text = file.read()
         self.assertEqual(text, self.test_text)
-        

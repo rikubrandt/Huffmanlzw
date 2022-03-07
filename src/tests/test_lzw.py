@@ -2,7 +2,7 @@ import unittest
 from utils.bit_converter import bytes_to_bits
 import os
 
-from lzw_compression.LZW import LZWCoding
+from lzw_compression.lzw import LZWCoding
 from lzw_compression.lzw_encoding import LZW_Encoding
 from lzw_compression.lzw_decoding import LZW_Decoding
 
@@ -35,8 +35,8 @@ class TestLZW(unittest.TestCase):
 
     ### DECODING
     def test_bits_to_list(self):
-        list = self.lzw.bits_to_list(self.test_bits)
-        self.assertEqual(list, self.test_compressed)
+        compressed = self.lzw.bits_to_list(self.test_bits)
+        self.assertEqual(compressed, self.test_compressed)
 
     def test_generate_text(self):
         text = self.lzw.generate_text(self.test_compressed)

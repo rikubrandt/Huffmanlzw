@@ -34,14 +34,14 @@ class HuffmanCoding:
         return heappop(heap)
 
     # Generates the dictionary of the huffman tree, used for encoding.
-    def generate_codes(self, root, s, table):
+    def generate_codes(self, root, string, table):
         if root is None:
             return
 
         if root.char is not None:
-            table[root.char] = s
-        self.generate_codes(root.left, s+"0", table)
-        self.generate_codes(root.right, s+"1", table)
+            table[root.char] = string
+        self.generate_codes(root.left, string+"0", table)
+        self.generate_codes(root.right, string+"1", table)
 
     def generate_encoded_text(self, table, text):
         string = ""

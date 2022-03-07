@@ -34,4 +34,4 @@ class HuffmanEncoding():
         with open(encoded_file_name, "wb") as encoded_file:
             encoded_file.write(combined_bytes)
         return encoded_file_name
-
+        
