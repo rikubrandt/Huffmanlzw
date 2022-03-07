@@ -3,8 +3,8 @@ from utils.bit_converter import bytes_to_bits
 import os
 
 from lzw_compression.LZW import LZWCoding
-from lzw_compression.LZW_encoding import LZW_Encoding
-from lzw_compression.LZW_decoding import LZW_Decoding
+from lzw_compression.lzw_encoding import LZW_Encoding
+from lzw_compression.lzw_decoding import LZW_Decoding
 
 class TestLZW(unittest.TestCase):
     def setUp(self):
@@ -22,15 +22,14 @@ class TestLZW(unittest.TestCase):
 
     def test_create_bits(self):
         bits = self.lzw.create_bits(self.test_compressed)
-        print("BITS: ", bits)
         self.assertEqual(bits, self.test_bits)
 
     def test_lzw_compression(self):
         lzw_encoder = LZW_Encoding()
         path = self.path + "/lzwtest.txt"
         filename = lzw_encoder.encode_file(path)
-        with open(filename, "rb") as f:
-            bytes = f.read()
+        with open(filename, "rb") as file:
+            bytes = file.read()
         bites = bytes_to_bits(bytes)
         self.assertEqual(bites, self.test_bits)
 

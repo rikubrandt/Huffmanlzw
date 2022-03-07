@@ -76,3 +76,4 @@ class TestHuffman(unittest.TestCase):
         with open(filename, "r") as f:
             text = f.read()
         self.assertEqual(text, self.test_text)
+        

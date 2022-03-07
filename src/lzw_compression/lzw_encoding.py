@@ -8,8 +8,8 @@ class LZWEncoding:
     def encode_file(self, path):
         encoder = LZWCoding()
 
-        with open(path, "r") as f:
-            text = f.read()
+        with open(path, "r") as file:
+            text = file.read()
         compressed = encoder.compress(text)
 
 
