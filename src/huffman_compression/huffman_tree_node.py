@@ -9,7 +9,7 @@ class HuffmanTreeNode():
     def __lt__(self, other):
         return self.freq < other.freq
 
-    def isLeaf(self):
+    def is_leaf(self):
         return self.left is None and self.right is None
 
     def set_right_node(self, right):

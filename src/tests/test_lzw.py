@@ -47,7 +47,6 @@ class TestLZW(unittest.TestCase):
         lzw_decoder = LZW_Decoding()
         path = self.path + "/lzwtest.bin"
         filename = lzw_decoder.decode_file(path)
-        with open(filename, "r") as f:
-            text = f.read()
+        with open(filename, "r") as file:
+            text = file.read()
         self.assertEqual(text, self.test_text)
-        

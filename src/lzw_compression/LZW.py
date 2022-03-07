@@ -5,34 +5,31 @@ class LZWCoding:
     def compress(self, text):
         codes = {}
 
-        for c in text:
-            if c not in codes:
-                codes[c] = ord(c)
-
-        s = ""
+        for char in text:
+            if char not in codes:
+                codes[char] = ord(char)
 
         dict_size = 256
 
         compressed = []
-        s = text[0]
+        current = text[0]
 
         for i in range(len(text)):
             if i != len(text)-1:
                 next_char = text[i+1]
             else:
                 next_char = ""
-            
-            new = s + next_char
+            new = current + next_char
 
             if new not in codes:
                 compressed.append(codes[s])
                 codes[new] = dict_size
                 dict_size += 1
-                s = next_char
+                current = next_char
             else:
-                s = new
-        
-        compressed.append(codes[s])
+                current = new
+
+        compressed.append(codes[current])
         return compressed
 
     def create_bits(self, compressed):
@@ -42,9 +39,9 @@ class LZWCoding:
         needed_bits = format(maxlength, "08b")
 
         bits = ""
-        for c in compressed:
-            b = "{0:0" + str(maxlength) + "b}"
-            bits += b.format(c)
+        for char in compressed:
+            binary = "{0:0" + str(maxlength) + "b}"
+            bits += binary.format(char)
 
         return needed_bits + bits
 
@@ -56,9 +53,9 @@ class LZWCoding:
 
     def generate_text(self, compressed):
         codes = {}
-        for n in compressed:
-            if n < 256:
-                codes[str(n)] = chr(n)
+        for item in compressed:
+            if item < 256:
+                codes[str(item)] = chr(item)
 
         dict_size = 256
         current = str(compressed[0])

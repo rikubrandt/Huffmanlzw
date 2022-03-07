@@ -20,7 +20,7 @@ def main():
             print("Exiting...")
             break
         else:
-            print("Invalid number. ")        
+            print("Invalid number. ")
 
 
 def encode():
@@ -58,7 +58,7 @@ def encode():
             print("Invalid number. ")
 
 def decode():
-     while True:
+    while True:
         print("1. Huffman Decoding.")
         print("2. LZW Decoding.")
         print("3. Exit.")

@@ -44,17 +44,17 @@ class HuffmanCoding:
         self.generate_codes(root.right, s+"1", table)
 
     def generate_encoded_text(self, table, text):
-        s = ""
+        string = ""
         for char in text:
-            s += table.get(char)
-        return s
+            string += table.get(char)
+        return string
 
     # Turns the tree structure to bits for encoding.
     def huffman_tree_to_bits(self, root):
         self.tree_bits = ""
 
         def rec(node):
-            if node.isLeaf():
+            if node.is_leaf():
                 self.tree_bits += "1" + format(ord(node.char), "08b")
             else:
                 self.tree_bits += "0"
@@ -112,7 +112,7 @@ class HuffmanCoding:
                 node = node.left
             else:
                 node = node.right
-            if node.isLeaf():
+            if node.is_leaf():
                 text = text + node.char
                 node = root
         return text

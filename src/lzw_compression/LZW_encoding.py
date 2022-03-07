@@ -14,10 +14,8 @@ class LZWEncoding:
 
 
         bits = encoder.create_bits(compressed)
-        
         bytes = bits_to_bytes(bits)
         encoded_file_name = os.path.splitext(path)[0] + ".bin"
         with open(encoded_file_name, "wb") as encoded_file:
             encoded_file.write(bytes)
-            
         return encoded_file_name

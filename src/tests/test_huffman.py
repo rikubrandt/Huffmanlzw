@@ -1,10 +1,10 @@
 import unittest
-from Utils.bit_converter import bytes_to_bits
+from utils.bit_converter import bytes_to_bits
 
 import os
-from Huffman_compression.huffman import HuffmanCoding
-from Huffman_compression.huffman_encoding import Huffman_Encoding
-from Huffman_compression.huffman_decoding import Huffman_Decoding
+from huffman_compression.huffman import HuffmanCoding
+from huffman_compression.huffman_encoding import Huffman_Encoding
+from huffman_compression.huffman_decoding import Huffman_Decoding
 
 class TestHuffman(unittest.TestCase):
 

@@ -14,17 +14,11 @@ class HuffmanDecoding():
         bites = bytes_to_bits(bytes)
 
         tree_bits, text_bits = decode.divide_bits(bites)
-
-        #print("Treebits: ", tree_bits)
-        #print("Text bits: ", text_bits)
         tree_root = decode.build_bits_to_tree(tree_bits)
-
-        print("Tree bits: ", tree_bits)
-        print("Text bits: ", text_bits)
 
         text = decode.build_bits_to_text(text_bits, tree_root)
         decoded_file_name = os.path.splitext(path)[0] + ".txt"
-        with open(decoded_file_name, "w") as encoded_file:
+        with open(decoded_file_name, "w", encoding="utf-8") as encoded_file:
             encoded_file.write(text)
 
         return decoded_file_name
