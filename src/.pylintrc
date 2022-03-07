@@ -7,7 +7,7 @@ max-args=6
 notes=FIXME,XXX
 [MESSAGES CONTROL]
 disable=
-	C0114,
+	missing-docstring,
 	# -- START OF EXAMPLE-SPECIFIC SUPPRESSIONS --
 	no-self-use,
 	unused-argument,
