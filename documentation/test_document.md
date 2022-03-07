@@ -16,7 +16,7 @@ And test coverage report can be generated
 
 
 ## Performance testing
-Generated lorem ipsum files from ![Loremipsum.com](https://www.lipsum.com/) and compressed and decompressed the files.
+Generated lorem ipsum files from [Loremipsum.com](https://www.lipsum.com/) and compressed and decompressed the files.
 
 ### Huffman 
 | Original Size (in bytes) | Compressed size | (%) | Compression time (ms) | Decompression time (ms) |
@@ -42,3 +42,5 @@ Generated lorem ipsum files from ![Loremipsum.com](https://www.lipsum.com/) and 
 | 262 144 | 79 534 | 69.56 | 129.757 | 65.367 |
 | 524 288 | 155 702 | 70.41 | 258.63 | 122.925 |
 | 1 048 576 | 300 889 | 71.32 | 541.371 | 235.868 |
+
+![Compression percentage](/documentation/pictures/compression.png)
