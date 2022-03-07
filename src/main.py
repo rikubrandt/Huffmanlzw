@@ -3,7 +3,7 @@ from LZW_compression.LZW_decoding import LZW_Decoding
 
 from Huffman_compression.huffman_encoding import Huffman_Encoding
 from Huffman_compression.huffman_decoding import Huffman_Decoding
-
+import os
 def main():
     print("Text file compression.")
     while True:
@@ -37,6 +37,7 @@ def encode():
                     huffman_encode = Huffman_Encoding()
                     new_file = huffman_encode.encode_file(path)
                     print("File encoded to: ", new_file)
+                    print(f"Compressed file is {count_compression(path, new_file)}%  smaller.")
                     break
                 except FileNotFoundError:
                     print("File not found.")
@@ -46,6 +47,7 @@ def encode():
                     lzw_encode = LZW_Encoding()
                     new_file = lzw_encode.encode_file(path)
                     print("File encoded to: ", new_file)
+                    print(f"Compressed file is {count_compression(path, new_file)}%  smaller.")
                     break
                 except FileNotFoundError:
                     print("File not found.")
@@ -88,6 +90,10 @@ def decode():
             else:
                 print("Invalid number. ")
 
+def count_compression(path, encoded_path):
+    original_size = os.path.getsize(path)
+    compressed_size = os.path.getsize(encoded_path)
+    return round((1-compressed_size/original_size)*100, 2)
 
 if __name__ == "__main__":
     main()
