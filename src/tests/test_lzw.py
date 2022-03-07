@@ -1,10 +1,10 @@
 import unittest
-from Utils.bit_converter import bytes_to_bits
+from utils.bit_converter import bytes_to_bits
 import os
 
-from LZW_compression.LZW import LZWCoding
-from LZW_compression.LZW_encoding import LZW_Encoding
-from LZW_compression.LZW_decoding import LZW_Decoding
+from lzw_compression.LZW import LZWCoding
+from lzw_compression.LZW_encoding import LZW_Encoding
+from lzw_compression.LZW_decoding import LZW_Decoding
 
 class TestLZW(unittest.TestCase):
     def setUp(self):
@@ -42,7 +42,6 @@ class TestLZW(unittest.TestCase):
     def test_generate_text(self):
         text = self.lzw.generate_text(self.test_compressed)
         self.assertEqual(text, self.test_text)
-    
 
     def test_lzw_decompression(self):
         lzw_decoder = LZW_Decoding()
@@ -51,3 +50,4 @@ class TestLZW(unittest.TestCase):
         with open(filename, "r") as f:
             text = f.read()
         self.assertEqual(text, self.test_text)
+        

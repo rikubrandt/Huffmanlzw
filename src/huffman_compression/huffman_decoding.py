@@ -1,8 +1,8 @@
-from Huffman_compression.huffman import HuffmanCoding
-from Utils.bit_converter import bytes_to_bits
+from huffman_compression.huffman import HuffmanCoding
+from utils.bit_converter import bytes_to_bits
 import os
 
-class Huffman_Decoding():
+class HuffmanDecoding():
 
     def decode_file(self, path):
 

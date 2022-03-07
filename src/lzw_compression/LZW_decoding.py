@@ -1,13 +1,13 @@
 
-from LZW_compression.LZW import LZWCoding
+from lzw_compression.LZW import LZWCoding
 
-from Utils.bit_converter import bytes_to_bits
+from utils.bit_converter import bytes_to_bits
 import os
 
 
 
 
-class LZW_Decoding:
+class LZWDecoding:
     def decode_file(self, path):
         decoder = LZWCoding()
 

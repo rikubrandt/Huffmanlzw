@@ -1,10 +1,10 @@
 
-from Huffman_compression.huffman import HuffmanCoding
+from huffman_compression.huffman import HuffmanCoding
 
 import os
-from Utils.bit_converter import bits_to_bytes
+from utils.bit_converter import bits_to_bytes
 
-class Huffman_Encoding():
+class HuffmanEncoding():
 
     def encode_file(self, path):
 

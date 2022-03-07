@@ -12,7 +12,6 @@ def bits_to_bytes(bits):
     for b in range(0, len(bits), 8):
         byte = (bits[b:b+8])
         byte_array.append(int(byte, 2))
-
     return bytes(byte_array)
 
 def bytes_to_bits(bytes):
@@ -23,4 +22,3 @@ def bytes_to_bits(bytes):
     #Removes the extra bits
     extras = int(bits[:8], 2)
     return bits[8+extras:]
-
