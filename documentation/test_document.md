@@ -43,4 +43,5 @@ Generated lorem ipsum files from [Loremipsum.com](https://www.lipsum.com/) and c
 | 524 288 | 155 702 | 70.41 | 258.63 | 122.925 |
 | 1 048 576 | 300 889 | 71.32 | 541.371 | 235.868 |
 
+### Compression percentage chart
 ![Compression percentage](/documentation/pictures/compression.png)
