@@ -25,6 +25,15 @@ class TestLZW(unittest.TestCase):
         print("BITS: ", bits)
         self.assertEqual(bits, self.test_bits)
 
+    def test_lzw_compression(self):
+        lzw_encoder = LZW_Encoding()
+        path = self.path + "/lzwtest.txt"
+        filename = lzw_encoder.encode_file(path)
+        with open(filename, "rb") as f:
+            bytes = f.read()
+        bites = bytes_to_bits(bytes)
+        self.assertEqual(bites, self.test_bits)
+
     ### DECODING
     def test_bits_to_list(self):
         list = self.lzw.bits_to_list(self.test_bits)
@@ -35,11 +44,10 @@ class TestLZW(unittest.TestCase):
         self.assertEqual(text, self.test_text)
     
 
-    def test_lzw_compression(self):
-        lzw_encoder = LZW_Encoding()
-        path = self.path + "/lzwtest.txt"
-        filename = lzw_encoder.encode_file(path)
-        with open(filename, "rb") as f:
-            bytes = f.read()
-        bites = bytes_to_bits(bytes)
-        self.assertEqual(bites, self.test_bits)
+    def test_lzw_decompression(self):
+        lzw_decoder = LZW_Decoding()
+        path = self.path + "/lzwtest.bin"
+        filename = lzw_decoder.decode_file(path)
+        with open(filename, "r") as f:
+            text = f.read()
+        self.assertEqual(text, self.test_text)

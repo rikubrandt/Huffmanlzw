@@ -4,6 +4,7 @@ from Utils.bit_converter import bytes_to_bits
 import os
 from Huffman_compression.huffman import HuffmanCoding
 from Huffman_compression.huffman_encoding import Huffman_Encoding
+from Huffman_compression.huffman_decoding import Huffman_Decoding
 
 class TestHuffman(unittest.TestCase):
 
@@ -66,4 +67,12 @@ class TestHuffman(unittest.TestCase):
 
     def test_bits_to_text(self):
         text = self.huffman.build_bits_to_text(self.encoded, self.tree)
+        self.assertEqual(text, self.test_text)
+
+    def test_huffman_decompression(self):
+        huffman_decoder = Huffman_Decoding()
+        path = self.path + "/text.bin"
+        filename = huffman_decoder.decode_file(path)
+        with open(filename, "r") as f:
+            text = f.read()
         self.assertEqual(text, self.test_text)

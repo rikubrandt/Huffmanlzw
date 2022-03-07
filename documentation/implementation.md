@@ -32,4 +32,4 @@
 - Decode the text using the dictionary.
 
 ### Time Complexity
-o(n)
+O(n)
