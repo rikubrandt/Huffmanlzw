@@ -1,0 +1,19 @@
+[MASTER]
+[VARIABLES]
+dummy-variables-rgx=^ignored_|^unused_
+[DESIGN]
+max-args=6
+[MISCELLANEOUS]
+notes=FIXME,XXX
+[MESSAGES CONTROL]
+disable=
+	missing-docstring,
+	misplaced-comparison-constant,
+	no-init,
+	no-name-in-module,
+	protected-access,
+	too-few-public-methods,
+	too-many-instance-attributes,
+	too-many-lines,
+	wrong-import-order,
+  bad-continuation,
