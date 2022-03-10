@@ -14,7 +14,6 @@ class HuffmanEncoding():
             text = file.read()
 
         freq = encode.calculate_frequency(text)
-        print(freq)
         root = encode.generate_huffman_tree(freq)
         dict = {}
         encode.generate_codes(root, '', dict)
